@@ -10,7 +10,12 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "keywords": ["ecommerce", "api", "express", "typescript"],
+  "keywords": [
+    "ecommerce",
+    "api",
+    "express",
+    "typescript"
+  ],
   "author": "NovaThreads Team",
   "license": "MIT",
   "dependencies": {
@@ -43,4 +48,3 @@
     "@types/supertest": "^6.0.2"
   }
 }
-
