@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { body } from 'express-validator';
 import { subscribe, unsubscribe, getSubscribers } from '../controllers/newsletterController';
 import { authenticate, requireAdmin } from '../middleware/auth';
+import { newsletterRateLimiter } from '../middleware/rateLimiters';
 
 const router = Router();
 
@@ -12,6 +13,7 @@ const router = Router();
  */
 router.post(
   '/subscribe',
+  newsletterRateLimiter,
   [
     body('email')
       .isEmail()
@@ -28,6 +30,7 @@ router.post(
  */
 router.post(
   '/unsubscribe',
+  newsletterRateLimiter,
   [
     body('email')
       .isEmail()
@@ -45,4 +48,3 @@ router.post(
 router.get('/subscribers', authenticate, requireAdmin, getSubscribers);
 
 export default router;
-
